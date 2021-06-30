@@ -1,0 +1,9 @@
+spring:
+  datasource:
+    dynamic:
+      datasource:
+        master:
+          url: jdbc:oracle:thin:@192.168.5.63:1521/orcl19
+          username: GASBUSINESS_SC
+          password: GASBUSINESS_SC
+          driver-class-name: oracle.jdbc.OracleDriver

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.demo.mapper.GasmeterMapper">
+    <!--<resultMap id="myFile" type="com.example.demo.entity.Gasmeter">-->
+         <!--主键的声明-->
+        <!--<id column="F_KEY" property="F_KEY"/>-->
+        <!--&lt;!&ndash; 针对其他列 &ndash;&gt;-->
+        <!--<result column="F_CUSTOMERCODE" property="F_CUSTOMERCODE"/>-->
+        <!--&lt;!&ndash;<result column="filename" property="filename"/>&ndash;&gt;-->
+        <!--&lt;!&ndash;<result column="ftype" property="ftype"/>&ndash;&gt;-->
+        <!--&lt;!&ndash;<result column="fsize" property="fsize"/>&ndash;&gt;-->
+        <!--&lt;!&ndash;<result column="downnum" property="downnum"/>&ndash;&gt;-->
+        <!--&lt;!&ndash;<result column="fileurl" property="fileurl"/>&ndash;&gt;-->
+	<!--</resultMap>-->
+
+    <select id="getCustomerByGascode" resultType="map">
+        SELECT
+	B.F_CUSTOMERNAME,
+    B.F_PHONE,
+	B.F_ADDRESS,
+	B.F_CARDTYPE,
+	B.F_CARDNO
+FROM
+	T_GASMETER A
+	INNER JOIN T_CUSTOMER B ON a.F_CUSTOMERCODE = B.F_CUSTOMERCODE
+	AND a.F_ISDELETE = '0'
+	AND a.F_METERTYPE = '003'
+	WHERE F_METERDIALCODE=#{meterdialcode}
+
+        
+    </select>
+	<!--<select id="getUser" resultMap="myFile">-->
+		   <!--select F_KEY,F_CUSTOMERCODE from T_CUSTOMER where F_CUSTOMERCODE='2030101202350'-->
+	<!--</select>-->
+</mapper>
